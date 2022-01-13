@@ -14,4 +14,10 @@ export class IntentionService {
   getIntentions(): Intention[] {
   	return INTENTIONS;
   }
+
+  createIntention(intention: Intention): void {
+  	console.log(intention);
+  	// Http getXMLHttpRequest()
+  	// 200 -> update localStorage
+  }
 }

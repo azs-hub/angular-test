@@ -1,0 +1,36 @@
+<mat-dialog-content class="mat-typography">
+		
+	<div>
+	<mat-form-field class="example-chip-list" appearance="fill">
+	  <mat-label>Formulations</mat-label>
+	  <mat-chip-list #chipList aria-label="Formulations">
+	    <mat-chip *ngFor="let intent of formulations" (removed)="remove(intent)">
+	      {{intent}}
+	      <button matChipRemove>
+	        <mat-icon>cancel</mat-icon>
+	      </button>
+	    </mat-chip>
+	    <input placeholder="New intent..."
+	           [matChipInputFor]="chipList"
+	           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+	           [matChipInputAddOnBlur]="addOnBlur"
+	           (matChipInputTokenEnd)="add($event)">
+	  </mat-chip-list>
+	</mat-form-field>
+	</div>
+	
+	<div>
+		<mat-form-field appearance="standard">
+	    <mat-label>Bot answer</mat-label>
+	    <input matInput [(ngModel)]="botAnswer" placeholder="Bot aswer" required>
+	    <mat-hint>Answer</mat-hint>
+	    <mat-error>This field is required</mat-error>
+	  </mat-form-field>
+	</div>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="createIntent()">Install</button>
+</mat-dialog-actions>
