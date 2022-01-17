@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+
 import { Intention } from './intention'
 import { INTENTIONS } from './mock-intent' 
 
@@ -11,13 +13,13 @@ export class IntentionService {
 
   constructor() { }
 
-  getIntentions(): Intention[] {
-  	return INTENTIONS;
+  getIntentions(): Observable<Intention[]> {
+  	const intentions = of(INTENTIONS);
+  	return intentions;
   }
 
-  createIntention(intention: Intention): void {
-  	console.log(intention);
-  	// Http getXMLHttpRequest()
-  	// 200 -> update localStorage
+  add(intent: Intention): void {
+    if (intent !== undefined)
+      this.intentions.push(intent);
   }
 }

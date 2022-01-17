@@ -16,7 +16,7 @@ export class IntentCreateComponent implements OnInit {
   formulations: string[] = [];
   botAnswer: string = "";
 
-  constructor() { }
+  constructor(private intentionService: IntentionService) { }
 
   ngOnInit(): void {
   }
@@ -42,13 +42,11 @@ export class IntentCreateComponent implements OnInit {
   }
 
   createIntent(): void {
-  	console.log(this.formulations, this.botAnswer);
-  	let intentions: Intention = {
+  	let intention: Intention = {
   		formulations: this.formulations,
   		answer: this.botAnswer,
   	};
-
-
+  	this.intentionService.add(intention);
   }
 
 

@@ -9,7 +9,7 @@ import { IntentionService } from '../../services/intention/intention.service'
 })
 export class IntentListComponent implements OnInit {
 
-	intentions?: Intention[];
+	intentions: Intention[] = [];
   constructor(private intentionService: IntentionService) { }
 
   ngOnInit(): void {
@@ -17,7 +17,8 @@ export class IntentListComponent implements OnInit {
   }
 
   getIntentions(): void {
-	  this.intentions = this.intentionService.getIntentions();
+	  this.intentionService.getIntentions()
+      .subscribe(intentions => this.intentions = intentions);
 	}
-
+  
 }
